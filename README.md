@@ -1,16 +1,18 @@
+```markdown
+
 \# ✈️ Flight Data Processor
 
-\### Real-Time Aerial Surveying System
+\## Real-Time Aerial Surveying System
 
 
 
-\[!\[Java](https://img.shields.io/badge/Java-26-orange.svg)](https://adoptium.net/)
+\[!\[Java](https://img.shields.io/badge/Java-26-orange?style=flat-square\&logo=java)](https://adoptium.net/)
 
-\[!\[Gradle](https://img.shields.io/badge/Gradle-9.7-blue.svg)](https://gradle.org/)
+\[!\[Gradle](https://img.shields.io/badge/Gradle-9.7-blue?style=flat-square\&logo=gradle)](https://gradle.org/)
 
-\[!\[JUnit](https://img.shields.io/badge/JUnit-5.10-green.svg)](https://junit.org/junit5/)
+\[!\[JUnit](https://img.shields.io/badge/JUnit-5.10-green?style=flat-square\&logo=junit5)](https://junit.org/junit5/)
 
-\[!\[License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+\[!\[License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 
 
 
@@ -22,27 +24,41 @@
 
 
 
-\*\*Flight Data Processor\*\* is a real-time flight simulation and data processing system designed for aerial surveying applications. It simulates multiple concurrent flights with realistic flight phases, validates all data, exports to CSV, and provides comprehensive statistics.
+\*\*Flight Data Processor\*\* is a production-grade, real-time flight simulation and data processing system designed for \*\*aerial surveying applications\*\*. It simulates multiple concurrent flights with realistic flight phases, validates all data against aviation standards, exports to CSV, and provides comprehensive per-flight statistics.
 
 
 
-\### 🎯 Key Features
+> 🎯 \*\*Built for:\*\* Software Engineer for Aerial Surveying Systems role at Aerodata AG
 
 
 
-\- ✈️ \*\*Multi-Flight Simulation\*\* - Run 3+ concurrent flights with realistic behavior
+\---
 
-\- 📈 \*\*Realistic Flight Phases\*\* - TAKEOFF → CLIMB → CRUISE → DESCENT → LANDING
 
-\- 🔍 \*\*Data Validation\*\* - Automatic validation of altitude, speed, and status
 
-\- 💾 \*\*CSV Export\*\* - All data saved to CSV for post-flight analysis
+\## ✨ Key Features
 
-\- 📊 \*\*Per-Flight Statistics\*\* - Detailed stats for each individual flight
 
-\- 🧪 \*\*Unit Testing\*\* - 9 passing JUnit tests
 
-\- ⚙️ \*\*Gradle Build\*\* - Modern build automation
+| Feature | Description |
+
+|---------|-------------|
+
+| ✈️ \*\*Multi-Flight Simulation\*\* | Run 3+ concurrent flights with realistic behavior |
+
+| 📈 \*\*Realistic Flight Phases\*\* | TAKEOFF → CLIMB → CRUISE → DESCENT → LANDING |
+
+| 🔍 \*\*Data Validation\*\* | Automatic validation of altitude (0-60,000 ft) and speed (100-700 knots) |
+
+| 💾 \*\*CSV Export\*\* | All data saved to CSV for post-flight analysis |
+
+| 📊 \*\*Per-Flight Statistics\*\* | Detailed stats for each individual flight |
+
+| 🧪 \*\*Unit Testing\*\* | 9 passing JUnit tests with 100% pass rate |
+
+| ⚙️ \*\*Gradle Build\*\* | Modern build automation with dependency management |
+
+| 🏗️ \*\*Clean Architecture\*\* | Modular, testable, maintainable code |
 
 
 
@@ -54,75 +70,93 @@
 
 
 
-┌─────────────────────────────────────────────────────────────────┐
+```
 
-│ FLIGHT DATA PROCESSOR │
+┌─────────────────────────────────────────────────────────────────────────────┐
 
-├─────────────────────────────────────────────────────────────────┤
+│                         FLIGHT DATA PROCESSOR                              │
 
-│ │
+│                          System Architecture                               │
 
-│ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ │
+├─────────────────────────────────────────────────────────────────────────────┤
 
-│ │ MainApp │───▶│ Flight │ │ Data │ │
+│                                                                             │
 
-│ │ (Orchestrator) │ Simulator │ │ Validator │ │
+│   ┌─────────────────────────────────────────────────────────────────────┐   │
 
-│ └──────────────┘ └──────┬───────┘ └──────┬───────┘ │
+│   │                         MAIN APP                                    │   │
 
-│ │ │ │ │
+│   │                    (Orchestrator)                                   │   │
 
-│ │ ▼ ▼ │
+│   └───────────────┬─────────────────────────┬─────────────────────────┘   │
 
-│ │ ┌──────────────┐ ┌──────────────┐ │
+│                   │                         │                             │
 
-│ └──────────▶│ Flight │ │ File │ │
+│                   ▼                         ▼                             │
 
-│ │ Processor │───▶│ Logger │ │
+│   ┌───────────────────────────┐   ┌───────────────────────────┐          │
 
-│ └──────┬───────┘ └──────────────┘ │
+│   │    Flight Simulator       │   │    Flight Simulator       │          │
 
-│ │ │
+│   │         AA101            │   │         UA202             │          │
 
-│ ▼ │
+│   └───────────┬───────────────┘   └───────────┬───────────────┘          │
 
-│ ┌──────────────┐ │
+│               │                               │                          │
 
-│ │ Flight │ │
+│               └───────────────┬───────────────┘                          │
 
-│ │ Data │ │
+│                               ▼                                          │
 
-│ │ (POJO) │ │
+│               ┌───────────────────────────────┐                          │
 
-│ └──────────────┘ │
+│               │      Flight Processor         │                          │
 
-│ │
+│               │    (Data Processing)          │                          │
 
-└─────────────────────────────────────────────────────────────────┘
+│               └───────────────┬───────────────┘                          │
+
+│                               │                                          │
+
+│               ┌───────────────┼───────────────┐                          │
+
+│               ▼               ▼               ▼                          │
+
+│   ┌───────────────┐ ┌───────────────┐ ┌───────────────┐                 │
+
+│   │   Data        │ │   File        │ │   Validation  │                 │
+
+│   │   Validator   │ │   Logger      │ │   Summary     │                 │
+
+│   └───────────────┘ └───────────────┘ └───────────────┘                 │
+
+│                                                                             │
+
+└─────────────────────────────────────────────────────────────────────────────┘
+
+```
 
 
 
-
-
-\### Component Breakdown
+\### Component Details
 
 
 
-| Component | Responsibility |
+| Component | Responsibility | Key Methods |
 
-|-----------|---------------|
+|-----------|---------------|-------------|
 
-| \*\*MainApp\*\* | Orchestrates the entire system - starts flights, manages threads, handles shutdown |
+| \*\*MainApp\*\* | Orchestrates the entire system | `main()`, starts threads, manages shutdown |
 
-| \*\*FlightSimulator\*\* | Simulates one flight with realistic phases (TAKEOFF → CLIMB → CRUISE → DESCENT → LANDING) |
+| \*\*FlightSimulator\*\* | Simulates one flight with realistic phases | `run()`, `generateRealisticData()`, `advancePhase()` |
 
-| \*\*FlightProcessor\*\* | Processes data, stores history, calculates statistics |
+| \*\*FlightProcessor\*\* | Processes data, stores history, calculates stats | `processData()`, `getAverageAltitude()`, `printSummary()` |
 
-| \*\*FlightData\*\* | POJO representing one flight data point (ID, altitude, speed, status, timestamp) |
+| \*\*FlightData\*\* | POJO representing one flight data point | Getters, `toString()` |
 
-| \*\*DataValidator\*\* | Validates all data against realistic parameters (altitude 0-60,000 ft, speed 100-700 knots) |
+| \*\*DataValidator\*\* | Validates all data against realistic parameters | `validate()`, `printValidationSummary()` |
 
-| \*\*FileLogger\*\* | Exports all data to CSV files with timestamps |
+| \*\*FileLogger\*\* | Exports all data to CSV files | `logData()`, `close()` |
 
 
 
@@ -134,55 +168,63 @@
 
 
 
+```
+
 flight-data-processor/
 
 ├── src/
 
-│ ├── main/
+│   ├── main/
 
-│ │ └── java/
+│   │   └── java/
 
-│ │ └── com/
+│   │       └── com/
 
-│ │ └── myproject/
+│   │           └── myproject/
 
-│ │ └── flight/
+│   │               └── flight/
 
-│ │ ├── FlightData.java # Data POJO
+│   │                   ├── FlightData.java          # Data POJO
 
-│ │ ├── FlightSimulator.java # Flight simulation
+│   │                   ├── FlightSimulator.java     # Flight simulation
 
-│ │ ├── FlightProcessor.java # Data processing
+│   │                   ├── FlightProcessor.java     # Data processing
 
-│ │ ├── DataValidator.java # Validation
+│   │                   ├── DataValidator.java       # Validation
 
-│ │ ├── FileLogger.java # CSV export
+│   │                   ├── FileLogger.java          # CSV export
 
-│ │ └── MainApp.java # Application entry point
+│   │                   └── MainApp.java             # Application entry point
 
-│ └── test/
+│   └── test/
 
-│ └── java/
+│       └── java/
 
-│ └── com/
+│           └── com/
 
-│ └── myproject/
+│               └── myproject/
 
-│ └── flight/
+│                   └── flight/
 
-│ ├── FlightDataTest.java # 5 tests
+│                       ├── FlightDataTest.java      # 5 tests
 
-│ ├── FlightSimulatorTest.java # 2 tests
+│                       ├── FlightSimulatorTest.java # 2 tests
 
-│ └── MainAppTest.java # 2 tests
+│                       └── MainAppTest.java         # 2 tests
 
-├── build.gradle # Gradle build configuration
+├── build.gradle                                      # Gradle build configuration
 
-├── settings.gradle # Project settings
+├── settings.gradle                                   # Project settings
 
-├── .gitignore # Git ignore rules
+├── .gitignore                                        # Git ignore rules
 
-└── README.md # This file
+└── README.md                                         # This file
+
+```
+
+
+
+\---
 
 
 
@@ -194,9 +236,15 @@ flight-data-processor/
 
 
 
-\- \*\*Java 26\*\* or higher
+| Requirement | Version |
 
-\- \*\*Gradle 9.7\*\* or higher
+|-------------|---------|
+
+| \*\*Java\*\* | 26 or higher |
+
+| \*\*Gradle\*\* | 9.7 or higher |
+
+| \*\*Git\*\* | Latest version |
 
 
 
@@ -204,33 +252,39 @@ flight-data-processor/
 
 
 
-1\. \*\*Clone the repository\*\*
+```bash
 
-&#x20;  ```bash
+\# Clone the repository
 
-&#x20;  git clone https://github.com/yourusername/flight-data-processor.git
+git clone https://github.com/rkumar49/flight-data-processor-Real-Time-Aerial-Surveying-System-with-Java-Multi-threading-and-Gradle-
 
-&#x20;  cd flight-data-processor
-
-Build the project
+cd flight-data-processor-Real-Time-Aerial-Surveying-System-with-Java-Multi-threading-and-Gradle-
 
 
 
-bash
+\# Build the project
 
 gradle build
 
-Run the application
 
 
-
-bash
+\# Run the application
 
 gradle run
 
-What Happens When You Run
+```
 
-text
+
+
+\---
+
+
+
+\## 📊 Sample Output
+
+
+
+```
 
 ========================================
 
@@ -258,7 +312,21 @@ text
 
 
 
-... (Real-time flight data flowing) ...
+\[PROCESSED] AA101 | Alt: 157 ft | Speed: 193 knots | Status: TAKEOFF | Total Records: 1
+
+\[PROCESSED] UA202 | Alt: 128 ft | Speed: 167 knots | Status: TAKEOFF | Total Records: 2
+
+\[PROCESSED] DL303 | Alt: 145 ft | Speed: 161 knots | Status: TAKEOFF | Total Records: 3
+
+\[PHASE] DL303 -> CLIMB
+
+\[PROCESSED] DL303 | Alt: 2789 ft | Speed: 294 knots | Status: CLIMB | Total Records: 20
+
+\[PHASE] AA101 -> CLIMB
+
+\[PROCESSED] AA101 | Alt: 2824 ft | Speed: 267 knots | Status: CLIMB | Total Records: 21
+
+... (30 seconds of data) ...
 
 
 
@@ -304,7 +372,33 @@ Average Speed     : 344 knots
 
 
 
-... (More stats for each flight) ...
+✈️ UA202
+
+&#x20; Records     : 21
+
+&#x20; Avg Alt     : 13,506 ft
+
+&#x20; Alt Range   : 128 - 33,960 ft
+
+&#x20; Avg Speed   : 339 knots
+
+&#x20; Speed Range : 167 - 528 knots
+
+
+
+✈️ DL303
+
+&#x20; Records     : 24
+
+&#x20; Avg Alt     : 15,369 ft
+
+&#x20; Alt Range   : 145 - 33,421 ft
+
+&#x20; Avg Speed   : 342 knots
+
+&#x20; Speed Range : 161 - 544 knots
+
+========================================
 
 
 
@@ -328,101 +422,39 @@ Total Records   : 68
 
 \[SYSTEM] Mission complete. Goodbye!
 
+```
 
 
 
-
-📊 Data Flow
-
-text
-
-┌─────────────────────────────────────────────────────────────────────────────┐
-
-│                           DATA FLOW DIAGRAM                                │
-
-├─────────────────────────────────────────────────────────────────────────────┤
-
-│                                                                             │
-
-│  1. MainApp starts 3 FlightSimulator threads                               │
-
-│         │                                                                   │
-
-│         ▼                                                                   │
-
-│  2. Each FlightSimulator generates realistic flight data                   │
-
-│     (TAKEOFF → CLIMB → CRUISE → DESCENT → LANDING)                       │
-
-│         │                                                                   │
-
-│         ▼                                                                   │
-
-│  3. Data is sent to FlightProcessor for processing                        │
-
-│         │                                                                   │
-
-│         ▼                                                                   │
-
-│  4. DataValidator checks:                                                  │
-
-│     - Altitude: 0 - 60,000 ft                                             │
-
-│     - Speed: 100 - 700 knots                                              │
-
-│     - Status: Must be valid                                               │
-
-│     - Timestamp: Must be > 0                                              │
-
-│         │                                                                   │
-
-│         ▼                                                                   │
-
-│  5. If valid:                                                              │
-
-│     - Stored in memory (dataHistory)                                      │
-
-│     - Written to CSV file (FileLogger)                                    │
-
-│     - Statistics updated                                                  │
-
-│         │                                                                   │
-
-│         ▼                                                                   │
-
-│  6. After 30 seconds:                                                      │
-
-│     - All flights stop                                                    │
-
-│     - Summary printed                                                     │
-
-│     - Per-flight stats printed                                            │
-
-│     - Validation summary printed                                          │
-
-│     - CSV file closed                                                     │
-
-│                                                                             │
-
-└─────────────────────────────────────────────────────────────────────────────┘
+\---
 
 
 
-🧪 Testing
-
-Run all tests:
+\## 🧪 Testing
 
 
 
-bash
+```bash
+
+\# Run all tests
 
 gradle test
 
-Test Results (9/9 Passing):
+
+
+\# Run with detailed output
+
+gradle test --info
+
+```
 
 
 
-text
+\### Test Results
+
+
+
+```
 
 FlightDataTest > testFlightDataTimestamp() PASSED
 
@@ -444,11 +476,21 @@ MainAppTest > testMainAppHasMainMethod() PASSED
 
 
 
+BUILD SUCCESSFUL ✅
+
+```
 
 
-📈 Sample CSV Output
 
-csv
+\---
+
+
+
+\## 📈 Sample CSV Output
+
+
+
+```csv
 
 Timestamp,FlightId,Altitude,Speed,Status,RecordTime
 
@@ -462,71 +504,115 @@ Timestamp,FlightId,Altitude,Speed,Status,RecordTime
 
 2026-09-01T12:34:59.123,AA101,290,231,TAKEOFF,1788314128761
 
-... (More data)
+2026-09-01T12:34:59.456,UA202,276,238,TAKEOFF,1788314128762
+
+```
+
+
+
+\---
+
+
+
+\## 🛠️ Commands Reference
+
+
+
+| Command | Description |
+
+|---------|-------------|
+
+| `gradle build` | Compile code and run tests |
+
+| `gradle run` | Run the flight simulator |
+
+| `gradle test` | Run all unit tests |
+
+| `gradle clean` | Clean build directory |
+
+| `gradle build --refresh-dependencies` | Refresh dependencies |
+
+| `gradle test --info` | Run tests with detailed output |
+
+
+
+\---
+
+
+
+\## 💡 Skills Demonstrated
+
+
+
+| Skill | Evidence |
+
+|-------|----------|
+
+| \*\*Java SE\*\* | Complete Java application with OOP principles |
+
+| \*\*Multi-threading\*\* | 3 concurrent flights with synchronized processing |
+
+| \*\*Real-time processing\*\* | 30-second mission with real-time data flow |
+
+| \*\*Data validation\*\* | Comprehensive validation with summary |
+
+| \*\*File I/O\*\* | CSV export with timestamps |
+
+| \*\*Gradle\*\* | Build automation with dependency management |
+
+| \*\*JUnit\*\* | 9 unit tests with 100% pass rate |
+
+| \*\*Aerospace domain\*\* | Realistic flight phases and parameters |
+
+| \*\*System design\*\* | Modular, testable, maintainable architecture |
+
+| \*\*Clean code\*\* | Well-organized, documented, production-ready |
+
+
+
+\---
+
+
+
+\## 🎯 Future Enhancements
+
+
+
+| Feature | Status | Description |
+
+|---------|--------|-------------|
+
+| JSON Export | 🔜 Planned | Export data as JSON format |
+
+| HTML Report | 🔜 Planned | Generate formatted HTML report |
+
+| Configuration File | 🔜 Planned | Load settings from config.properties |
+
+| Real-Time Dashboard | 🔜 Planned | Text-based cockpit display |
+
+| Performance Metrics | 🔜 Planned | Track data rate, memory usage |
+
+
+
+\---
+
+
+
+\## 📝 License
+
+
+
+This project is licensed under the MIT License - see the \[LICENSE](LICENSE) file for details.
+
+
+
+\---
 
 
 
 
 
-🛠️ Commands
 
-Command	Description
-
-gradle build	Compile code and run tests
-
-gradle run	Run the flight simulator
-
-gradle test	Run all unit tests
-
-gradle clean	Clean build directory
-
-gradle build --refresh-dependencies	Refresh dependencies
-
-
-
-
-
-💡 Skills Demonstrated
-
-
-
-Skill	Evidence
-
-Java SE	Complete Java application
-
-Multi-threading	3 concurrent flights
-
-Real-time processing	30-second mission
-
-Data validation	Validation summary
-
-File I/O	CSV export
-
-Gradle	Build automation
-
-JUnit	9 unit tests
-
-Aerospace domain	Realistic flight phases
-
-System design	Modular architecture
-
-Clean code	Well-organized, documented
-
-
-
-
-
-📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-
-
-
-
-🙏 Acknowledgments
-
-Built as part of learning real-time aerial surveying systems
 
 
 
