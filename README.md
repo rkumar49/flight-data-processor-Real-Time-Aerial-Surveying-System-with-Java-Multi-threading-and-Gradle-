@@ -23,8 +23,7 @@ During the mission, flight telemetry is continuously generated, processed, valid
 
 ### 🎯 Built for
 
-**Software Engineer – Aerial Surveying Systems** role at **Aerodata AG**
-
+**Software Engineer – Aerial Surveying Systems**
 ---
 
 ## ✨ Key Features
