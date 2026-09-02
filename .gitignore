@@ -1,0 +1,32 @@
+# Compiled files
+*.class
+build/
+bin/
+target/
+out/
+
+# Gradle files
+.gradle/
+gradle-wrapper.jar
+gradlew
+gradlew.bat
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# OS files
+.DS_Store
+Thumbs.db
+*.log
+
+# Data files
+*.csv
+*.json
+*.html
+*.txt
+!README.md
